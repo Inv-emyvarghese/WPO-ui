@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
 import { login } from "@/services/auth-service/authService";
@@ -14,7 +14,6 @@ import {
   setRefreshToken,
 } from "@/utils/tokenUtils";
 import axios from "axios";
-import GoogleSSO from "./GoogleSSO";
 import { useTranslation } from "react-i18next";
 
 type LoginFormInput = {
@@ -157,14 +156,7 @@ export default function LoginPage() {
               </p>
             )}
 
-            <div className="mb-2 text-right">
-              <Link
-                to="/forgot-password"
-                className="text-sm font-medium text-blue-600 no-underline hover:underline"
-              >
-                {t("auth.login.link.forgotPassword")}
-              </Link>
-            </div>
+            
 
             <button
               type="submit"
@@ -175,25 +167,9 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="my-4 flex items-center gap-2">
-            <hr className="grow border-slate-300" />
-            <span className="text-sm text-slate-600">
-              {t("auth.login.orLabel")}
-            </span>
-            <hr className="grow border-slate-300" />
-          </div>
-          <div className="mb-2 flex justify-center google-login">
-            <GoogleSSO sourcePage="login" />
-          </div>
-          <p className="text-sm text-slate-700">
-            {t("auth.login.noAccountLabel")}
-            <Link
-              to="/signup"
-              className="font-medium text-blue-600 no-underline hover:underline"
-            >
-              {t("auth.login.link.signup")}
-            </Link>
-          </p>
+         
+         
+          
         </div>
       </div>
     </div>

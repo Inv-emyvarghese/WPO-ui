@@ -1,0 +1,95 @@
+import { createBrowserRouter } from "react-router-dom";
+import { lazy } from "react";
+import PublicLayout from "@/layouts/PublicLayout";
+import ProtectedLayout from "@/layouts/ProtectedLayout";
+
+
+const LoginPage = lazy(() => import("@/pages/auth/login/LoginPage"));
+const SignupPage = lazy(() => import("@/pages/auth/sign-up/SignUpPage"));
+const SignupTokenPage = lazy(
+  () => import("@/pages/auth/sign-up/SignUpTokenPage")
+);
+const ForgotPasswordPage = lazy(
+  () => import("@/pages/auth/forgot-password/ForgotPasswordPage")
+);
+const ForgotPasswordTokenPage = lazy(
+  () => import("@/pages/auth/forgot-password/ForgotPasswordTokenPage")
+);
+const NotFoundPage = lazy(() => import("@/pages/not-found/NotFoundPage"));
+const DashboardPage = lazy(() => import("@/pages/dashboard/DashboardPage"));
+
+const router = createBrowserRouter([
+  // grouped Public routes
+  {
+    path: "/",
+    // element: <PublicRoute />,
+    errorElement: <div>Something went wrong in route</div>,
+    children: [
+      {
+        element: <PublicLayout />,
+        children: [
+          {
+            path: "login",
+            element: <LoginPage />,
+          },
+          {
+            path: "dashboard",
+            element: <DashboardPage />,
+          },
+          {
+            path: "signup",
+            children: [
+              {
+                index: true,
+                element: <SignupPage />,
+              },
+              {
+                path: ":token",
+                element: <SignupTokenPage />,
+              },
+            ],
+          },
+          {
+            path: "forgot-password",
+            children: [
+              {
+                index: true,
+                element: <ForgotPasswordPage />,
+              },
+              {
+                path: ":token",
+                element: <ForgotPasswordTokenPage />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  // Grouped protected routes
+  {
+    path: "/",
+    // element: <PrivateRoute />,
+    errorElement: <div>Something went wrong in dashboard route</div>,
+    children: [
+      {
+        element: <ProtectedLayout />,
+        children: [
+          {
+            index: true,
+            element: <DashboardPage />,
+          },
+          
+        ],
+      },
+    ],
+  },
+
+  {
+    path: "*", // This matches any invalid path
+    element: <NotFoundPage />, // Display 404 page
+  },
+]);
+
+export default router;

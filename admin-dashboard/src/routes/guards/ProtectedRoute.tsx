@@ -11,31 +11,12 @@ type ProtectedRouteProps = {
 export default function ProtectedRoute({
   redirectPath = "/login",
 }: Readonly<ProtectedRouteProps>) {
-  const { token, loading,handleLogout } = useMyContext();
+  const { token, loading } = useMyContext();
   if (loading) {
     return <PageLoadingSpinner />;
   }
-  // Handle token-based routes (SignupToken, ForgotPasswordToken)
-  if (
-    location.pathname.startsWith("/signup") ||
-    location.pathname.startsWith("/forgot-password")
-  ) {
-    handleLogout();
-    return (
-      <>
-        <ScrollToTop />
-        <Outlet />
-      </>
-    );
-  }
-  if (token) {
-    if (
-      location.pathname.startsWith("/login") ||
-      location.pathname.startsWith("/signup")
-    ) {
-      return <Navigate to="/contacts" replace />;
-    }
 
+  if (token) {
     return (
       <>
         <ScrollToTop />

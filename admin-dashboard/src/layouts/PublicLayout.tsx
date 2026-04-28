@@ -1,4 +1,4 @@
-import Footer from "@/components/layout/Footer";
+// import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
 import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
@@ -24,7 +24,7 @@ const PublicLayout: React.FC = () => {
         >
           <Outlet />
         </div>
-        <Footer />
+        {/* <Footer /> */}
       </main>
     </div>
   );

@@ -2,8 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import { lazy } from "react";
 import PublicLayout from "@/layouts/PublicLayout";
 import ProtectedLayout from "@/layouts/ProtectedLayout";
+import PublicRoute from "./guards/PublicRoute";
+import ProtectedRoute from "./guards/ProtectedRoute";
+import ErrorFallback from "@/pages/error-boundary/ErrorFallback";
 
-
+/* eslint-disable react-refresh/only-export-components */
 const LoginPage = lazy(() => import("@/pages/auth/login/LoginPage"));
 const SignupPage = lazy(() => import("@/pages/auth/sign-up/SignUpPage"));
 const SignupTokenPage = lazy(
@@ -22,8 +25,8 @@ const router = createBrowserRouter([
   // grouped Public routes
   {
     path: "/",
-    // element: <PublicRoute />,
-    errorElement: <div>Something went wrong in route</div>,
+    element: <PublicRoute />,
+    errorElement: <ErrorFallback />,
     children: [
       {
         element: <PublicLayout />,
@@ -31,10 +34,6 @@ const router = createBrowserRouter([
           {
             path: "login",
             element: <LoginPage />,
-          },
-          {
-            path: "dashboard",
-            element: <DashboardPage />,
           },
           {
             path: "signup",
@@ -70,8 +69,8 @@ const router = createBrowserRouter([
   // Grouped protected routes
   {
     path: "/",
-    // element: <PrivateRoute />,
-    errorElement: <div>Something went wrong in dashboard route</div>,
+    element: <ProtectedRoute />,
+    errorElement: <ErrorFallback />,
     children: [
       {
         element: <ProtectedLayout />,
@@ -80,7 +79,10 @@ const router = createBrowserRouter([
             index: true,
             element: <DashboardPage />,
           },
-          
+          {
+            path: "dashboard",
+            element: <DashboardPage />,
+          },
         ],
       },
     ],

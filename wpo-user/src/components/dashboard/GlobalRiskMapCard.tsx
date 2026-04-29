@@ -135,7 +135,7 @@ export function GlobalRiskMapCard({
           )}
           <div
             aria-label="World risk map"
-            className="relative flex w-full min-w-0 flex-col"
+            className="relative mx-auto flex w-full min-w-0 max-w-[1300px] flex-col"
             style={{
               minHeight: worldMapAreaHeight,
               height: worldMapAreaHeight,

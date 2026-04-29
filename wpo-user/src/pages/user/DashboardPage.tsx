@@ -67,7 +67,7 @@ export default function DashboardPage() {
         placeholder={t("dashboard.filters.selectPlaceholder")}
       />
       <div className="shrink-0 bg-slate-900 pb-8 pt-6">
-        <div className="mx-auto w-full min-w-0 max-w-[1400px] px-4 sm:px-6">
+        <div className="mx-auto w-full min-w-0 max-w-[1350px] px-4 sm:px-6">
           <GlobalRiskMapCard
             scores={scores}
             loading={loading}
@@ -91,7 +91,7 @@ export default function DashboardPage() {
         </div>
       </div>
       <div className="min-h-0 w-full min-w-0 flex-1">
-        <div className="mx-auto w-full min-w-0 max-w-[1400px] px-4 sm:px-6">
+        <div className="mx-auto w-full min-w-0 max-w-[1350px] px-4 sm:px-6">
           <DashboardMapDetailTabs
             hasSelectedCountry={Boolean(selected?.id)}
             selectedCountry={

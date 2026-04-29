@@ -34,7 +34,7 @@ export default function Header({ handleDrawerToggle }: Readonly<HeaderProps>) {
   if (isDashboard) {
     return (
       <header className={barClass}>
-        <div className="box-border flex h-full w-full max-w-full min-h-16 items-center px-2 pl-2 pr-1 sm:px-3">
+        <div className="box-border mx-auto flex h-full w-full min-h-16 max-w-[1300px] items-center px-2 pl-2 pr-1 sm:px-3">
           {isAuthenticated() && (
             <IconButton
               type="button"
@@ -72,7 +72,7 @@ export default function Header({ handleDrawerToggle }: Readonly<HeaderProps>) {
 
   return (
     <header className={barClass}>
-      <div className="box-border flex h-full w-full max-w-full min-h-16 items-center px-2 pl-2 pr-2 sm:px-3">
+      <div className="box-border mx-auto flex h-full w-full min-h-16 max-w-[1300px] items-center px-2 pl-2 pr-2 sm:px-3">
         {isAuthenticated() && (
           <IconButton
             type="button"

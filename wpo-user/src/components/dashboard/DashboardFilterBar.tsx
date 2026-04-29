@@ -24,7 +24,7 @@ export function DashboardFilterBar({
         "relative z-30 border-b border-slate-200 bg-white shadow-sm"
       )}
     >
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col gap-4 px-4 py-4 sm:flex-row sm:items-end sm:px-6">
+      <div className="mx-auto flex w-full max-w-[1350px] flex-col gap-4 px-4 py-4 sm:flex-row sm:items-end sm:px-6">
         <label className="flex w-full min-w-0 max-w-xs flex-1 flex-col gap-1.5">
           <span className="text-xs font-semibold uppercase tracking-wider text-slate-500">
             {labelCountry}

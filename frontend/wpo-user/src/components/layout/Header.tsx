@@ -37,10 +37,10 @@ export default function Header({ handleDrawerToggle }: Readonly<HeaderProps>) {
   if (isDashboard) {
     return (
       <header className={barClass}>
-        <div className="box-border flex h-full min-h-16 w-full items-center px-4 sm:px-6">
+        <div className="box-border flex h-full min-h-16 w-full items-center px-2 pl-2 pr-1 sm:px-3">
           <div
             className={cx(
-              "mx-auto flex h-full w-full min-w-0 max-w-[1350px] items-center gap-2",
+              "mx-auto flex h-full w-full min-w-0 max-w-[1300px] items-center gap-2",
               DASHBOARD_MAP_CARD_ALIGN_X
             )}
           >

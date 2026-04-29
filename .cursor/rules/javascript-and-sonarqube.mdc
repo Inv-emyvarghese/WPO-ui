@@ -1,0 +1,56 @@
+---
+alwaysApply: true
+---
+
+JavaScript (React) Sonarqube Code Quality 
+
+Extract nested ternary operation into an independent statement.
+Refactor the function to reduce its cognitive complexity to the allowed limit of 15.
+
+General Rules
+- Avoid unused function parameters (S1117)
+- Do not leave commented-out code in files (S125)
+- Maintain proper file headers when required (S1451)
+- Remove all unused variables from the codebase (S1481)
+- Remove unused assignments (S1854)
+- Avoid creating empty arrays or objects that are never used (S2681)
+
+Readability & Simplicity
+- Keep function complexity low and readable (S138)
+- Keep cognitive complexity low (below 14)
+- Use template strings instead of string concatenation (S3500)
+- Avoid duplicate keys in objects (S4621)
+- Prefer const over let whenever possible (S3513)
+- Avoid indexed loops when cleaner options exist (S1155)
+
+Logging
+- Do not use console.log in production code (S106)
+
+Code Execution Safety
+- Prevent SQL injection patterns (S2078)- Avoid unsafe HTML and JS execution (S5131)
+- Never use eval() in any scenario (S1523)
+- Avoid vulnerable or catastrophic regular expressions (S4507)
+
+Cryptography & Files
+- Do not use weak encryption algorithms (S3649)
+- Validate file-system access logic properly (S2819)
+
+Code Design
+- Avoid overly large switch statements (S3317)
+- Avoid functions with too many parameters (S107)
+- Avoid nested template strings (S1110)
+
+Structure & Naming
+- Follow consistent naming conventions across the codebase (S3008)
+- Do not create excessively long files; keep files focused (S1541)
+- Avoid duplicate string literals; extract them into constants (S1192)
+
+Logic Simplification
+- Simplify boolean expressions where possible (S1821)
+
+Efficiency
+- Remove duplicate code blocks to improve maintainability (S1871)
+- Prefer Map() over plain objects when appropriate (S3751)
+
+Async & Promises
+- Handle Promises properly, avoiding deep .then() nesting (S2201)- Avoid unnecessary use of async/await if not required (S4123)

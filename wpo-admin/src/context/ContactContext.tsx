@@ -1,5 +1,4 @@
 // ContactContext.tsx
-import { getCountryList } from "@/services/contact-service/contactService";
 import { refreshToken } from "@/services/token-service/tokenService";
 import {
   getAccessTokenExpiry,
@@ -35,7 +34,6 @@ interface ContactContextType {
   setLoading: (loading: boolean | null) => void;
   user: User | null;
   setUser: (user: User | ((prev: User | null) => User | null)) => void;
-  countries: { code: string; name: string }[] | [];
 }
 
 const ContactContext = createContext<ContactContextType | undefined>(undefined);
@@ -65,9 +63,7 @@ export const ContactProvider = ({ children }: { children: ReactNode }) => {
     return storedUser ? (JSON.parse(storedUser) as User) : null;
   });
 
-  const [countries, setCountries] = useState<{ code: string; name: string }[]>(
-    []
-  );
+  
 
   //persist the data on localstotage
   useEffect(() => {
@@ -76,19 +72,7 @@ export const ContactProvider = ({ children }: { children: ReactNode }) => {
     }
   }, [user]);
 
-  //get countey list
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        const list = await getCountryList();
-        setCountries(list);
-      } catch (error) {
-        console.error("Failed to fetch countries", error);
-      }
-    };
-
-    fetchCountries();
-  }, []);
+ 
 
   //refreshToken API call functionality implementation
   useEffect(() => {
@@ -159,9 +143,8 @@ export const ContactProvider = ({ children }: { children: ReactNode }) => {
       setLoading,
       user,
       setUser,
-      countries,
     }),
-    [token, loading, user, countries]
+    [token, loading, user]
   );
   return (
     <ContactContext.Provider value={contextValue}>

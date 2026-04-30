@@ -11,7 +11,7 @@ export default defineConfig({
       usePolling: true,
     },
     strictPort: true,
-    port: 3001,
+    port: 3000,
   },
   test: {
     passWithNoTests: true,

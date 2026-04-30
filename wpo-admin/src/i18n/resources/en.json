@@ -1,0 +1,386 @@
+{
+  "app": {
+    "header": "Psychosocial Risk Dashboard",
+    "footer": "Psychosocial Risk Dashboard. All rights reserved.",
+    "unexpected": "Unexpected error occurs",
+    "dashboardHeaderTitle": "Psychosocial Risk Context Dashboard (Country-Level)",
+    "help": "Help"
+  },
+  "dashboard": {
+    "filters": {
+      "country": "Country",
+      "industry": "Industry",
+      "companySize": "Company size",
+      "selectPlaceholder": "—"
+    },
+    "map": {
+      "loading": "Loading…",
+      "title": "Global Psychosocial Risk Dashboard",
+      "subtitle": "Psychosocial Risk Levels for Employers Worldwide",
+      "pill": "Employer Psychosocial Risk Scores",
+      "updated": "Updated: ",
+      "clearSelection": "Clear Selection",
+      "placeholder": "Select a country on the map to view detailed risk analysis",
+      "placeholderSelected": "Selected: {{name}}. Detailed risk analysis will appear here when available.",
+      "riskPanel": {
+        "aria": "Risk analysis for {{name}}",
+        "regulatoryTitle": "Regulatory & Enforcement Risk",
+        "regulatory": {
+          "a": "Strict Regulations",
+          "b": "Active Inspections"
+        },
+        "nonComplianceTitle": "Non-Compliance Consequence Risk",
+        "nonCompliance": {
+          "a": "High Fines & Legal Liability",
+          "b": "Reputation Impact"
+        },
+        "factorsTitle": "Recognized Risk Factors",
+        "factors": {
+          "workload": "Workload & Stress",
+          "harassment": "Harassment & Bullying",
+          "jobInsecurity": "Job Insecurity"
+        },
+        "consequencesTitle": "Consequences of Non-Compliance",
+        "consequences": {
+          "fines": "Heavy Fines & Sanctions",
+          "legal": "Legal Actions",
+          "absenteeism": "Increased Absenteeism"
+        }
+      }
+    },
+    "references": {
+      "sectionTitle": "Source Attribution & References",
+      "primaryDataSources": "Primary Data Sources",
+      "regulatoryFrameworks": "Regulatory Frameworks",
+      "methodologyNote": "Methodology Note",
+      "dataConfidenceLevels": "Data Confidence Levels",
+      "confidence": {
+        "high": "High",
+        "mediumHigh": "Medium-High",
+        "medium": "Medium",
+        "low": "Low"
+      },
+      "methodologyBody": "The composite risk scores presented in this dashboard are calculated using a weighted average of four primary dimensions: Regulatory Framework (30%), Enforcement Capacity (30%), Socio-Political Stability (20%), and Health Infrastructure (20%). Data is normalized on a 0-100 scale where 100 represents maximum risk. Forward-looking trends are modeled based on legislative pipelines and projected economic indicators.",
+      "methodologyVersion": "Methodology Version: 2.4.1",
+      "methodologyReview": "Last Methodology Review: December 2025",
+      "primaryItems": {
+        "ilo": "International Labour Organization (ILO) - Global Wage Report 2024-2025",
+        "who": "World Health Organization (WHO) - Mental Health Atlas 2023",
+        "oecd": "OECD - Guidelines for Multinational Enterprises on Responsible Business Conduct",
+        "gpi": "Global Peace Index 2025 (Institute for Economics & Peace)"
+      },
+      "frameworkItems": {
+        "iso": "ISO 45003:2021 - Occupational health and safety management — Psychological health and safety at work",
+        "eu": "EU Directive on Work-Life Balance (2019/1158)",
+        "ca": "National Standard of Canada for Psychological Health and Safety in the Workplace"
+      },
+      "dataConfidenceIntro": "Our data confidence index is calculated based on the recency, source reliability, and cross-verification of the underlying datasets. Understanding these levels is critical for making informed risk management decisions.",
+      "dataConfidence": {
+        "highBody": "Based on recent official government statistics (less than 2 years old) and verified by multiple international bodies (ILO, WHO).",
+        "highUse": "Use for: Strategic planning",
+        "mediumHighBody": "Based on official statistics (less than 5 years old) or high-quality academic studies with consistent findings across regions.",
+        "mediumHighUse": "Use for: Tactical adjustments",
+        "mediumBody": "Based on older statistics (more than 5 years) or limited regional studies. Trends are extrapolated from similar markets.",
+        "mediumUse": "Use for: General awareness",
+        "lowBody": "Based on anecdotal evidence, news reports, or proxy indicators. Significant data gaps exist in key areas.",
+        "lowUse": "Use for: Preliminary monitoring"
+      },
+      "bubbleKey": {
+        "regulation": "Regulation maturity",
+        "enforcement": "Enforcement capacity",
+        "pop": "Population"
+      }
+    },
+    "mapDetailTabs": {
+      "executiveOverview": "Executive Overview",
+      "dimensionsAndScores": "Dimensions & Scores",
+      "context": "Context",
+      "forecasting": "Forecasting & Trends",
+      "references": "References",
+      "comingSoon": "This section will be available soon.",
+      "selectCountryToEnable": "Select a country to open this section.",
+      "forecastingContent": {
+        "matrix": {
+          "title": "Global Regulatory & Enforcement Matrix",
+          "subtitle": "Evolution of regulatory framework vs. enforcement capacity over time.",
+          "legendLine": "Bubble size = Population • Color = Overall Risk Score",
+          "xAxis": "Regulatory Framework Maturity",
+          "yAxis": "Enforcement Capacity",
+          "quadrant": {
+            "tl": "Low Reg / High OHS Enf.",
+            "tr": "High Reg / High Enf.",
+            "bl": "Low Reg / Low Enf.",
+            "br": "High Reg / Low Enf."
+          },
+          "highRisk": "High Risk",
+          "lowRisk": "Low Risk",
+          "stepBack": "Step back one year",
+          "stepForward": "Step forward one year",
+          "play": "Play",
+          "pause": "Pause",
+          "ariaSlider": "Select year for matrix view",
+          "datasetLabel": "Countries",
+          "modHigh": "Mod-High risk",
+          "modLow": "Mod-Low risk"
+        },
+        "governance": {
+          "title": "Governance Timeline",
+          "lineAria": "Psychosocial risk score trend by year",
+          "sub": "PSYCHOSOCIAL RISK & GOVERNANCE TIMELINE",
+          "description": "Key developments in psychosocial risk regulations and structural risk context over time.",
+          "countryLabel": "Country",
+          "trendNote": "Trend Signals",
+          "trend1": "Structural Risk Context",
+          "trend2": "Regulatory Evolution",
+          "trend3": "Enforcement Capacity",
+          "disclaimer": "Survey and research based country-level indicators only.",
+          "milestone1": {
+            "title": "Psychosocial Risks Recognized",
+            "body": "OSH law updated to explicitly address psychosocial risks.",
+            "tag": "2022 • REGULATORY"
+          },
+          "milestone2": {
+            "title": "Mandatory Assessments Introduced",
+            "body": "Employers required to conduct regular psychosocial risk assessments.",
+            "tag": "2024 • OBLIGATIONS"
+          },
+          "milestone3": {
+            "title": "Civil Liability Expanded",
+            "body": "Claims permitted for psychosocial harm in certain conditions.",
+            "tag": "2026 • ENFORCEMENT"
+          },
+          "yLow": "Low",
+          "yHigh": "High"
+        }
+      },
+      "panels": {
+        "dimensionsTitle": "Risk context dimensions and scores",
+        "systemLevelTitle": "System level indicators",
+        "regulatoryIndexTitle": "Regulatory severity index"
+      },
+      "dimensionTable": {
+        "overviewTitle": "Risk dimensions overview",
+        "overviewBody": "This breakdown analyzes the five key risk vectors contributing to the country's overall psychosocial risk profile. Scores are derived from regulatory frameworks, enforcement data, and market trends.",
+        "riskFactor": {
+          "high": "High",
+          "medium": "Medium",
+          "low": "Low"
+        }
+      },
+      "emptyState": {
+        "title": "Welcome to the Risk Context Dashboard",
+        "description": "Select a country from the map above or the dropdown menu to view detailed psychosocial risk analysis, regulatory frameworks, and forecasting data.",
+        "actionHint": "Please make a selection to proceed"
+      },
+      "executiveOverviewContent": {
+        "keyRiskMetrics": "Key Risk Metrics",
+        "recentUpdates": "Recent Updates & Alerts",
+        "viewSource": "View Source",
+        "metrics": {
+          "overallRiskScore": "Overall Risk Score",
+          "overallRiskScoreValue": "78",
+          "tier": "Tier",
+          "tierValue": "Tier 3",
+          "regulatoryMaturity": "Regulatory Maturity",
+          "regulatoryMaturityValue": "Enforced",
+          "trendDirection": "Trend Direction",
+          "trendDirectionValue": "↑ Rising"
+        },
+        "alerts": {
+          "critical": {
+            "title": "Critical Alert",
+            "body": "Ongoing conflict continues to create severe workplace psychosocial risks, particularly in eastern regions, impacting employee well-being.",
+            "date": "Jan 10, 2026"
+          },
+          "moderate": {
+            "title": "Moderate Alert",
+            "body": "Economic instability is significantly affecting job security and increasing financial stress levels across multiple industrial sectors.",
+            "date": "Jan 8, 2026"
+          },
+          "information": {
+            "title": "Information",
+            "body": "New government initiatives supporting comprehensive mental health services and enhanced workplace safety regulations have been announced.",
+            "date": "Jan 5, 2026"
+          }
+        },
+        "recommendations": {
+          "title": "Recommendations",
+          "nonDiagnosticTitle": "Non-Diagnostic Information",
+          "nonDiagnosticBody": "The guidance in this dashboard is contextual information based on public frameworks and general risk context. It is not a professional diagnosis, medical advice, or a substitute for qualified legal, medical, or occupational health expertise.",
+          "section1": {
+            "label": "Section 1",
+            "title": "Legal & Regulatory Context",
+            "intro": "Psychosocial risk management has evolved from a narrow focus on individual stress to a broader, systematic view of work design, organizational culture, and the prevention of harm. Jurisdictions are increasingly explicit that psychosocial hazards are part of occupational health and safety, alongside physical risks.",
+            "keyPointsHeading": "Key Points",
+            "keyPoints": {
+              "point0": "OHS and employment laws increasingly reference psychosocial risk and the duty to manage it like other workplace hazards.",
+              "point1": "Regulators may expect risk assessments, control measures, consultation, and documentation that demonstrate due diligence.",
+              "point2": "Standards and industry guidance often describe principles such as primary prevention, hierarchy of controls, and review cycles.",
+              "point3": "Work-related factors such as job demands, role clarity, support, and change management are commonly in scope of assessments.",
+              "point4": "Record-keeping, reporting, and worker participation requirements may apply, depending on local law and sector rules.",
+              "point5": "Obligations are evolving; treat regulatory references as a prompt to seek jurisdiction-specific professional advice when needed."
+            },
+            "legalPrincipleTitle": "Key Legal Principle",
+            "legalPrincipleBody": "Employers generally have a duty to take reasonably practicable steps to provide a safe work environment, which in many systems includes addressing psychosocial risk where it is foreseeable and significant.",
+            "complianceTitle": "Compliance Considerations",
+            "complianceBody": "Authorities often look for proportionate, proactive management systems: identification of hazards, controls that fit the level of risk, training, and periodic review, rather than ad hoc responses after incidents only."
+          },
+          "section2": {
+            "label": "Section 2",
+            "title": "Key Psychosocial Risk Drivers",
+            "intro": "Psychosocial risks arise from the interaction between job design, organizational management, social context, and individual worker characteristics. Evidence-based frameworks identify several primary risk categories.",
+            "keyPointsHeading": "Key Points",
+            "keyPoints": {
+              "point0": "Excessive job demands including workload intensity, time pressure, emotional labor requirements, and conflicting priorities",
+              "point1": "Low job control and autonomy including limited decision-making authority, restricted task variety, and constrained work methods",
+              "point2": "Inadequate organizational support including poor management quality, insufficient resources, and lack of role clarity",
+              "point3": "Interpersonal difficulties including workplace harassment, bullying, discrimination, violence, and social isolation",
+              "point4": "Job insecurity and precarious work arrangements including temporary contracts, unstable employment, and organizational change",
+              "point5": "Work-life imbalance including excessive hours, inflexible arrangements, and demands that conflict with personal responsibilities",
+              "point6": "Organizational justice issues including unfair treatment, inadequate recognition, poor communication, and lack of participation"
+            },
+            "legalPrincipleTitle": "Context-Specific Factors",
+            "legalPrincipleBody": "Industry sector, organizational size, workforce demographics, economic conditions, and cultural context all influence which risk drivers are most salient. Risk assessments should be tailored to organizational context.",
+            "complianceTitle": "Risk Interaction Effects",
+            "complianceBody": "Psychosocial risks often interact and compound. For example, high demands combined with low control and poor support create particularly elevated risk profiles. Risk assessment should consider cumulative and interactive effects."
+          },
+          "section3": {
+            "label": "Section 3",
+            "title": "Recommended Employer Actions",
+            "intro": "Evidence-based guidance from international organizations emphasizes systematic, prevention-focused approaches to psychosocial risk management. Recommended actions focus on organizational-level controls rather than individual-level interventions alone.",
+            "keyPointsHeading": "Key Points",
+            "keyPoints": {
+              "point0": "Establish formal commitment to psychosocial risk management through policy development, resource allocation, and governance structures",
+              "point1": "Conduct systematic risk assessments using validated tools, worker consultation processes, and multiple data sources (surveys, focus groups, incident data)",
+              "point2": "Implement organizational-level controls including job redesign, workload management systems, flexible work arrangements, and management training",
+              "point3": "Develop clear policies and procedures addressing harassment, bullying, violence prevention, and conflict resolution mechanisms",
+              "point4": "Provide training and awareness programs for managers and workers on psychosocial risk recognition, prevention, and support pathways",
+              "point5": "Establish reporting mechanisms that are accessible, confidential, and protected from retaliation, with clear investigation and response protocols",
+              "point6": "Monitor effectiveness through periodic review, outcome measurement, worker feedback mechanisms, and continuous improvement processes",
+              "point7": "Ensure coordination with occupational health services, employee assistance programs, and external specialist support when needed"
+            },
+            "hierarchyTitle": "Hierarchy of Controls",
+            "hierarchyBody": "Prioritize organizational and work design interventions over individual-level programs. Changing work demands, improving management practices, and redesigning jobs are generally more effective than resilience training alone.",
+            "legalPrincipleTitle": "Worker Participation",
+            "legalPrincipleBody": "Meaningful worker consultation and participation in risk assessment, control design, and evaluation processes is both a legal requirement in many jurisdictions and an effectiveness factor for interventions.",
+            "complianceTitle": "Avoid Over-Reliance on Individual Interventions",
+            "complianceBody": "While employee assistance programs and wellness initiatives have a role, they should not substitute for addressing organizational risk factors. Over-emphasis on individual coping can shift responsibility inappropriately."
+          },
+          "accessGuidance": {
+            "buttonLabel": "Access Detailed Guidance & Resources",
+            "subtext": "Links to comprehensive frameworks, assessment tools, and implementation guides"
+          },
+          "policyConsideration": {
+            "title": "Policy Development Consideration",
+            "body": "Effective psychosocial risk management requires integration with broader organizational health and safety management systems, alignment with human resource policies, and commitment from senior leadership. Standalone initiatives without systemic integration typically have limited effectiveness. Consider engaging worker representatives, occupational health professionals, and legal advisors in policy development processes."
+          }
+        }
+      }
+    },
+    "dimensionScores": {
+      "summaryAriaLabel": "Summary of average risk dimension scores",
+      "avgEnforcement": "Avg enforcement",
+      "avgPenalty": "Avg penalty",
+      "avgOverallRisk": "Avg overall risk",
+      "riskDimensionsVisualizationTitle": "Risk Dimensions Visualization",
+      "comparativeRiskRadar": "Comparative risk radar",
+      "radarChartAria": "Comparative risk radar chart: enforcement, penalty, and overall risk by dimension",
+      "colDimension": "Dimension",
+      "colEnf": "ENF.",
+      "colPen": "PEN.",
+      "colOverall": "Overall",
+      "colRiskFactor": "Risk factor",
+      "chartEnforcement": "Enforcement",
+      "chartPenalty": "Penalty",
+      "chartOverallRisk": "Overall risk"
+    },
+    "context": {
+      "searchCountriesAria": "Search countries in the regulatory severity table",
+      "regulatoryTableAria": "Regulatory severity index by country",
+      "regulatoryEmpty": "No countries found matching your criteria",
+      "regulatoryRegionFieldLabel": "Region",
+      "regulatoryRegionFilterAria": "Filter countries by region",
+      "regulatorySortFieldLabel": "Sort by",
+      "regulatorySortByAria": "Sort the regulatory table",
+      "systemLevelIndicatorsAccordion": "System level indicators, expand or collapse the section",
+      "systemLevelDisclaimer": "These indicators describe national-level regulatory systems and frameworks. They do not include employer-specific data, private outcomes, monetary figures, or compliance metrics. Information is for contextual understanding only.",
+      "systemLevelLimits": {
+        "li1": "These indicators reflect country-level legal and regulatory frameworks only",
+        "li2": "No employer-specific compliance data, incident rates, or financial outcomes are included",
+        "li3": "System-level indicators do not predict individual workplace conditions or employer liability",
+        "li4": "Local legal advice should be sought for specific organizational decision-making",
+        "li5": "Data is based on publicly available sources and may not reflect recent changes"
+      }
+    }
+  },
+  "pageNotFound": {
+    "title": "Page not found",
+    "text": "We can't find the page you were looking for.",
+    "link": {
+      "back": "Back"
+    }
+  },
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "text": "The page you’re looking for doesn’t seem to exist. Please check the URL and try again."
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome Back!",
+      "text": "Enter your email and password to access your account",
+      "orLabel": "or",
+      "noAccountLabel": "Don't have an account?",
+      "link": {
+        "signup": "Sign Up",
+        "forgotPassword": "Forgot Password?"
+      },
+      "labels": {
+        "email": "Email address",
+        "password": "Password"
+      }
+    },
+      "verifyEmail": {
+        "title": "Verify Your Email",
+        "forgotPassword": {
+          "text": "Enter your email address and we'll send you a link to reset password.",
+          "labels": {
+            "email": "Email address",
+            "verify": "Verify",
+            "back": "Back to Login"
+          }
+        },
+        "signUp": {
+          "text": "Enter your email address and we’ll send you a link to set up your account.",
+          "labels": {
+            "email": "Email address",
+            "verify": "Verify",
+            "back": "Back"
+          }
+        },
+        "orLabel": "or",
+        "link": {
+          "back": "Back"
+        }
+      },
+      "resetPassword": {
+        "title": "Reset Your Password",
+        "text": "Enter a new password below to change your password.",
+        "link": {
+          "back": "Back"
+        }
+      }
+  },
+  "user": {
+    "title": "User"
+  },
+  "admin": {
+    "title": "Admin"
+  },
+  "sidebar": {
+    "contactList": "Contact list",
+    "user": "User",
+    "myProfile": "My profile",
+    "termsOfUse": "Terms of use",
+    "privacy": "Privacy"
+  }
+}

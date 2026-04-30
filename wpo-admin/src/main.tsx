@@ -1,6 +1,5 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { ToastContainer } from "react-toastify";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 import App from "./App.tsx";
@@ -10,19 +9,8 @@ if (rootElement === null) {
   throw new Error("Mount element #root was not found.");
 }
 
-createRoot(rootElement).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <>
-      <App />
-      <ToastContainer
-        position="top-right"
-        className="!z-[1060]"
-        toastClassName="rounded-md"
-        pauseOnHover
-        pauseOnFocusLoss
-        closeOnClick={false}
-        draggable
-      />
-    </>
-  </StrictMode>,
+    <App />
+  </StrictMode>
 );

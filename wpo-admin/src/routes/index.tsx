@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { lazy } from "react";
 import PublicLayout from "@/layouts/PublicLayout";
 import ProtectedLayout from "@/layouts/ProtectedLayout";
@@ -22,12 +22,15 @@ const router = createBrowserRouter([
         element: <PublicLayout />,
         children: [
           {
+            index: true,
+            element: <Navigate to="/login" replace />,
+            errorElement: <ErrorFallback />,
+          },
+          {
             path: "login",
             element: <LoginPage />,
+            errorElement: <ErrorFallback />,
           },
-          
-          
-          
         ],
       },
     ],

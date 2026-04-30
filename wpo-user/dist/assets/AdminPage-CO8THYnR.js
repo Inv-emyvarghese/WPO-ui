@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-BE_tW6Ee.js";import{m as t}from"./index-_C0hAsCQ.js";var n=e();function r(){let{t:e}=t();return(0,n.jsx)(`div`,{className:`p-6`,children:(0,n.jsx)(`h1`,{className:`text-xl font-semibold text-slate-900`,children:e(`admin.title`)})})}function i(){return(0,n.jsx)(r,{})}export{i as default};

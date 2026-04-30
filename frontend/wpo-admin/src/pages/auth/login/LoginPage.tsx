@@ -1,4 +1,4 @@
-import { useState, type CSSProperties } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
@@ -25,27 +25,11 @@ type LoginFormInput = {
   password: string;
 };
 
-const LABEL_STYLE: CSSProperties = {
-  fontFamily: "Inter",
-  fontWeight: 400,
-  fontSize: "14px",
-  lineHeight: "17px",
-  color: "#000000",
-};
+const LABEL_CLASS =
+  "mb-2 block font-sans text-sm font-normal leading-[17px] text-black";
 
-function getInputStyle(hasError: boolean): CSSProperties {
-  return {
-    height: "40px",
-    background: "#FFFFFF",
-    border: `1px solid ${hasError ? "#DC2626" : "#A3A3A3"}`,
-    borderRadius: "6px",
-    fontFamily: "Inter",
-    fontWeight: 400,
-    fontSize: "14px",
-    lineHeight: "17px",
-    color: "#49525D",
-  };
-}
+const INPUT_BASE_CLASS =
+  "h-10 w-full rounded-md border bg-white pl-10 font-sans text-sm font-normal leading-[17px] text-[#49525D] transition outline-none disabled:cursor-not-allowed disabled:opacity-60";
 
 export default function LoginPage() {
   const { t } = useTranslation();
@@ -119,11 +103,7 @@ export default function LoginPage() {
             noValidate
           >
             <div>
-              <label
-                htmlFor="login-email"
-                className="mb-2 block"
-                style={LABEL_STYLE}
-              >
+              <label htmlFor="login-email" className={LABEL_CLASS}>
                 {t("auth.login.labels.username")}
               </label>
               <div className="relative">
@@ -135,8 +115,7 @@ export default function LoginPage() {
                   maxLength={255}
                   disabled={isSubmitting}
                   placeholder={t("auth.login.placeholders.username")}
-                  className="w-full pr-4 pl-10 transition outline-none disabled:cursor-not-allowed disabled:opacity-60"
-                  style={getInputStyle(emailHasError)}
+                  className={`${INPUT_BASE_CLASS} pr-4 ${emailHasError ? "border-red-600" : "border-neutral-400"}`}
                   {...register("email", {
                     ...emailValidation,
                     onChange: () => {
@@ -153,11 +132,7 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label
-                htmlFor="login-password"
-                className="mb-2 block"
-                style={LABEL_STYLE}
-              >
+              <label htmlFor="login-password" className={LABEL_CLASS}>
                 {t("auth.login.labels.password")}
               </label>
               <div className="relative">
@@ -169,8 +144,7 @@ export default function LoginPage() {
                   maxLength={100}
                   disabled={isSubmitting}
                   placeholder={t("auth.login.placeholders.password")}
-                  className="w-full pr-12 pl-10 transition outline-none disabled:cursor-not-allowed disabled:opacity-60"
-                  style={getInputStyle(passwordHasError)}
+                  className={`${INPUT_BASE_CLASS} pr-12 ${passwordHasError ? "border-red-600" : "border-neutral-400"}`}
                   {...register("password", {
                     required: passwordValidation.required,
                     onChange: () => {
@@ -213,8 +187,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full rounded-lg bg-[#002D5B] font-medium text-white shadow-md transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
-              style={{ height: "40px" }}
+              className="h-10 w-full rounded-lg bg-[#002D5B] font-medium text-white shadow-md transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {isSubmitting ? <LoadingSpinner /> : t("auth.login.buttons.login")}
             </button>

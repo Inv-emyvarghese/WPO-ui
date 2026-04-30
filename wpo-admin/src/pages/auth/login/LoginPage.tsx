@@ -15,8 +15,10 @@ import {
   setAccessTokenExpiry,
   setRefreshToken,
 } from "@/utils/tokenUtils";
-import axios from "axios";
 import { useTranslation } from "react-i18next";
+import type { ToastMessageType } from "@/constants/enum";
+import { extractErrorMessage } from "@/utils/errorUtils";
+import ToastMessage from "@/components/common/toast/ToastMessage";
 
 type LoginFormInput = {
   email: string;
@@ -48,7 +50,7 @@ function getInputStyle(hasError: boolean): CSSProperties {
 export default function LoginPage() {
   const { t } = useTranslation();
   const [showPassword, setShowPassword] = useState(false);
-
+  const [toastMessage, setToastMessage] = useState<ToastMessageType | undefined>(undefined);
   const { setToken, setUser } = useMyContext();
 
   const navigate = useNavigate();
@@ -57,7 +59,6 @@ export default function LoginPage() {
     register,
     handleSubmit,
     reset,
-    setError,
     clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormInput>();
@@ -80,24 +81,13 @@ export default function LoginPage() {
       reset();
       navigate("/");
     } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        if (err?.response?.status == 401 || err?.response?.status == 400) {
-          setError("root", {
-            type: "server",
-            message: "errors.login.credentialsInvalid",
-          });
-        } else {
-          setError("root", {
-            type: "server",
-            message: "errors.app.unexpected",
-          });
-        }
-      } else {
-        setError("root", {
-          type: "unknown",
-          message: "errors.app.unexpected",
-        });
-      }
+      setToastMessage({
+        message: extractErrorMessage(
+          err,
+          t("auth.login.errors.credentialsInvalid") || "Invalid email or password"
+        ),
+        type: "error",
+      });
     }
   };
 
@@ -105,7 +95,15 @@ export default function LoginPage() {
   const passwordHasError = Boolean(errors.password || errors.root);
 
   return (
-    <div className="flex items-center justify-center bg-white px-4">
+    <>
+      {toastMessage?.message && (
+        <ToastMessage
+          message={toastMessage.message}
+          type={toastMessage.type}
+          onClose={() => setToastMessage(undefined)}
+        />
+      )}
+      <div className="flex items-center justify-center bg-white px-4">
       <div className="w-full max-w-md">
         <div className="rounded-xl bg-white p-8 shadow-lg">
           <div className="mb-8 text-center">
@@ -224,5 +222,6 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

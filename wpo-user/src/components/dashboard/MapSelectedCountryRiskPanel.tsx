@@ -25,6 +25,12 @@ const sectionTitleClass =
 const listRowTextClass =
   'text-xs font-normal leading-4 text-[#90A1B9] [font-family:Inter,"Noto_Sans_JP",sans-serif]';
 
+const consequenceRowClass =
+  "box-border flex h-9 shrink-0 items-center gap-3 self-stretch rounded-[4px] bg-[rgba(49,65,88,0.3)] p-2";
+
+const consequenceRowTextClass =
+  'min-w-0 text-sm font-normal leading-5 tracking-[-0.15px] text-[#CAD5E2] [font-family:Inter,"Noto_Sans_JP",sans-serif]';
+
 const scoreValueBase =
   'shrink-0 text-2xl font-bold leading-8 tracking-[0.07px] [font-family:Inter,"Noto_Sans_JP",sans-serif]';
 
@@ -184,28 +190,29 @@ export function MapSelectedCountryRiskPanel({ countryId, countryName }: Readonly
           <div className="mt-1.5 flex flex-col gap-1.25">
             {(
               [
-                { k: "fines" as const, el: <Landmark className="h-5 w-5 text-[rgba(148,163,184,0.9)]" aria-hidden /> },
-                { k: "legal" as const, el: <Gavel className="h-5 w-5 text-[rgba(148,163,184,0.9)]" aria-hidden /> },
+                {
+                  k: "fines" as const,
+                  el: <Landmark className="h-4 w-4 shrink-0 text-[rgba(148,163,184,0.9)]" aria-hidden />,
+                },
+                {
+                  k: "legal" as const,
+                  el: <Gavel className="h-4 w-4 shrink-0 text-[rgba(148,163,184,0.9)]" aria-hidden />,
+                },
                 {
                   k: "absenteeism" as const,
                   el: (
-                    <UserMinus className="h-5 w-5" style={{ color: RISK_COLORS.veryHigh }} aria-hidden />
+                    <UserMinus
+                      className="h-4 w-4 shrink-0"
+                      style={{ color: RISK_COLORS.veryHigh }}
+                      aria-hidden
+                    />
                   ),
                 },
               ] as const
             ).map((row) => (
-              <div
-                key={row.k}
-                className="flex items-center gap-1.25 rounded py-[0.28rem] px-1.5"
-                style={{ backgroundColor: "#3141584D" }}
-              >
+              <div key={row.k} className={consequenceRowClass}>
                 {row.el}
-                <p
-                  className="text-sm font-normal leading-5 tracking-[-0.15px] text-[#CAD5E2]"
-                  style={{ fontFamily: 'Inter, "Noto Sans JP", sans-serif' }}
-                >
-                  {t(`${r}.consequences.${row.k}`)}
-                </p>
+                <p className={consequenceRowTextClass}>{t(`${r}.consequences.${row.k}`)}</p>
               </div>
             ))}
           </div>

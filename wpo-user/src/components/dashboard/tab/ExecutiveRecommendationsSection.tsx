@@ -269,7 +269,7 @@ export function ExecutiveRecommendationsSection() {
 
   return (
     <div
-      className="mt-2.5 rounded-xl border p-2 sm:p-2.5 [box-shadow:0_1px_3px_rgba(15,23,42,0.06)]"
+      className="rounded-xl border p-2 sm:p-2.5 [box-shadow:0_1px_3px_rgba(15,23,42,0.06)]"
       style={{ backgroundColor: cardBg, borderColor: borderSubtle }}
     >
       <h2 className="mb-2 text-[1.05rem] font-bold leading-tight sm:text-lg" style={{ color: textPrimary }}>

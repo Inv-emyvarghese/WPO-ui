@@ -3,13 +3,14 @@ import { Navigate, Outlet, useLocation } from "react-router-dom";
 import PageLoadingSpinner from "@/components/common/loaders/PageLoadingSpinner";
 import { useMyContext } from "@/context/ContactContext";
 import ScrollToTop from "@/components/layout/ScrollToTop";
+import { DEFAULT_APP_ROUTE } from "@/constants/stringConstants";
 
 type PublicRouteProps = {
   redirectPath?: string;
 };
 
 export default function PublicRoute({
-  redirectPath = "/",
+  redirectPath = DEFAULT_APP_ROUTE,
 }: Readonly<PublicRouteProps>) {
   const { token, loading, handleLogout } = useMyContext();
   const location = useLocation();
@@ -19,8 +20,8 @@ export default function PublicRoute({
   }
 
   const isPsychosocialDashboard =
-    location.pathname === "/psychosocial-dashboard" ||
-    location.pathname.startsWith("/psychosocial-dashboard/");
+    location.pathname === DEFAULT_APP_ROUTE ||
+    location.pathname.startsWith(`${DEFAULT_APP_ROUTE}/`);
 
   if (isPsychosocialDashboard) {
     return (
@@ -45,7 +46,7 @@ export default function PublicRoute({
     );
   }
 
-  // If user is authenticated, redirect to contacts
+  // If user is authenticated, redirect to default app (psychosocial dashboard)
   if (token) {
     return <Navigate to={redirectPath} replace />;
   }

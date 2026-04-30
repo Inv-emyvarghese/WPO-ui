@@ -1,10 +1,11 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Navigate } from "react-router-dom";
 import { lazy } from "react";
 import PublicLayout from "@/layouts/PublicLayout";
 import ProtectedLayout from "@/layouts/ProtectedLayout";
 import PublicRoute from "./guards/PublicRoute";
 import ProtectedRoute from "./guards/ProtectedRoute";
 import ErrorFallback from "@/pages/error-boundary/ErrorFallback";
+import { DEFAULT_APP_ROUTE } from "@/constants/stringConstants";
 
 /* eslint-disable react-refresh/only-export-components */
 const LoginPage = lazy(() => import("@/pages/auth/login/LoginPage"));
@@ -19,7 +20,6 @@ const ForgotPasswordTokenPage = lazy(
   () => import("@/pages/auth/forgot-password/ForgotPasswordTokenPage")
 );
 const NotFoundPage = lazy(() => import("@/pages/not-found/NotFoundPage"));
-const AdminPage = lazy(() => import("@/pages/admin/AdminPage"));
 const UserPage = lazy(() => import("@/pages/user/UserPage"));
 
 const router = createBrowserRouter([
@@ -32,6 +32,10 @@ const router = createBrowserRouter([
       {
         element: <PublicLayout />,
         children: [
+          {
+            index: true,
+            element: <Navigate to={DEFAULT_APP_ROUTE} replace />,
+          },
           {
             path: "login",
             element: <LoginPage />,
@@ -82,11 +86,7 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <AdminPage />,
-          },
-          {
-            path: "admin",
-            element: <AdminPage />,
+            element: <UserPage />,
           },
         ],
       },

@@ -33,31 +33,16 @@ describe("Header component", () => {
     vi.mocked(tokenUtils.isAuthenticated).mockReturnValue(false);
   });
 
-  it("renders app title and info icon on non-admin route", () => {
-    renderWithRouter("/");
+  it.each(["/", "/psychosocial-dashboard"])(
+    "renders dashboard header on %s",
+    (path) => {
+      renderWithRouter(path);
 
-    expect(
-      screen.getByRole("link", { name: /psychosocial risk dashboard/i })
-    ).toBeInTheDocument();
-  });
-
-  it("renders dashboard header on /admin", () => {
-    renderWithRouter("/admin");
-
-    expect(
-      screen.getByRole("heading", {
-        name: /psychosocial risk context dashboard \(country-level\)/i,
-      })
-    ).toBeInTheDocument();
-  });
-
-  it("renders dashboard header on /psychosocial-dashboard", () => {
-    renderWithRouter("/psychosocial-dashboard");
-
-    expect(
-      screen.getByRole("heading", {
-        name: /psychosocial risk context dashboard \(country-level\)/i,
-      })
-    ).toBeInTheDocument();
-  });
+      expect(
+        screen.getByRole("heading", {
+          name: /psychosocial risk context dashboard \(country-level\)/i,
+        })
+      ).toBeInTheDocument();
+    }
+  );
 });

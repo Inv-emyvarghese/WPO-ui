@@ -9,6 +9,7 @@
   "dashboard": {
     "filters": {
       "country": "Country",
+      "company": "Company",
       "industry": "Industry",
       "companySize": "Company size",
       "selectPlaceholder": "—"
@@ -372,9 +373,6 @@
   },
   "user": {
     "title": "User"
-  },
-  "admin": {
-    "title": "Admin"
   },
   "sidebar": {
     "contactList": "Contact list",

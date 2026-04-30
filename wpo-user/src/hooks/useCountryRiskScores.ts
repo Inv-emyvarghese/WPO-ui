@@ -2,10 +2,12 @@ import { useEffect, useMemo, useState } from "react";
 
 export type DashboardFilterState = {
   country: string;
+  company: string;
 };
 
 export const emptyFilters: DashboardFilterState = {
   country: "",
+  company: "",
 };
 
 /** world-atlas country `id` (ISO 3166-1 numeric string) → 0–100 */

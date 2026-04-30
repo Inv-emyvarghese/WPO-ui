@@ -15,6 +15,7 @@ import {
 } from "@/utils/tokenUtils";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { DEFAULT_APP_ROUTE } from "@/constants/stringConstants";
 
 type LoginFormInput = {
   email: string;
@@ -53,7 +54,7 @@ export default function LoginPage() {
       }
 
       reset();
-      navigate("/");
+      navigate(DEFAULT_APP_ROUTE);
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         if (err?.response?.status == 401 || err?.response?.status == 400) {

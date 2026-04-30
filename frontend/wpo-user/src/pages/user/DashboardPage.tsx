@@ -70,39 +70,43 @@ export default function DashboardPage() {
         placeholder={t("dashboard.filters.selectPlaceholder")}
       />
       <div className="shrink-0 bg-slate-900 pb-8 pt-6">
-        <div className="mx-auto w-full min-w-0 max-w-[1300px] px-4 sm:px-6">
-          <GlobalRiskMapCard
-            scores={scores}
-            loading={loading}
-            lastUpdated={last}
-            onSelectCountry={handleSelectCountry}
-            selectedCountryId={selected?.id ?? null}
-            selectedCountry={
-              selected?.id
-                ? { id: selected.id, name: selected.name }
-                : null
-            }
-            i18n={{
-              mapTitle: t("dashboard.map.title"),
-              mapSubtitle: t("dashboard.map.subtitle"),
-              mapPill: t("dashboard.map.pill"),
-              updated: t("dashboard.map.updated"),
-              clearSelection: t("dashboard.map.clearSelection"),
-              mapPlaceholder: t("dashboard.map.placeholder"),
-            }}
-          />
+        <div className="px-4 sm:px-6">
+          <div className="mx-auto w-full min-w-0 max-w-[1350px]">
+            <GlobalRiskMapCard
+              scores={scores}
+              loading={loading}
+              lastUpdated={last}
+              onSelectCountry={handleSelectCountry}
+              selectedCountryId={selected?.id ?? null}
+              selectedCountry={
+                selected?.id
+                  ? { id: selected.id, name: selected.name }
+                  : null
+              }
+              i18n={{
+                mapTitle: t("dashboard.map.title"),
+                mapSubtitle: t("dashboard.map.subtitle"),
+                mapPill: t("dashboard.map.pill"),
+                updated: t("dashboard.map.updated"),
+                clearSelection: t("dashboard.map.clearSelection"),
+                mapPlaceholder: t("dashboard.map.placeholder"),
+              }}
+            />
+          </div>
         </div>
       </div>
       <div className="min-h-0 w-full min-w-0 flex-1">
-        <div className="mx-auto w-full min-w-0 max-w-[1300px] px-4 sm:px-6">
-          <DashboardMapDetailTabs
-            hasSelectedCountry={Boolean(selected?.id)}
-            selectedCountry={
-              selected?.id
-                ? { id: selected.id, name: selected.name }
-                : null
-            }
-          />
+        <div className="px-4 sm:px-6">
+          <div className="mx-auto w-full min-w-0 max-w-[1350px]">
+            <DashboardMapDetailTabs
+              hasSelectedCountry={Boolean(selected?.id)}
+              selectedCountry={
+                selected?.id
+                  ? { id: selected.id, name: selected.name }
+                  : null
+              }
+            />
+          </div>
         </div>
       </div>
     </main>

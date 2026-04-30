@@ -40,7 +40,7 @@ export function DashboardFilterBar({
       <div className="px-4 py-4 sm:px-6">
         <div
           className={cx(
-            "mx-auto flex w-full min-w-0 max-w-[1300px] flex-col gap-4 sm:flex-row sm:items-end",
+            "mx-auto flex w-full min-w-0 max-w-[1350px] flex-col gap-4 sm:flex-row sm:items-end",
             DASHBOARD_MAP_CARD_ALIGN_X
           )}
         >

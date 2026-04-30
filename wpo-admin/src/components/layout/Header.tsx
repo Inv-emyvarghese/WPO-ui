@@ -1,7 +1,7 @@
 import { isAuthenticated } from "@/utils/tokenUtils";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
-import { IconButton } from "@/components/ui/IconButton";
+import { IconButton } from "@/components/common/icons/IconButton";
 import { HeaderInfoIconSize } from "@/constants/stringConstants";
 import { Info, Layers, Menu, Shield } from "lucide-react";
 import { cx } from "@/utils/cx";

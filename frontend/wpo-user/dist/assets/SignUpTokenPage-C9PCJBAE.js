@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BE_tW6Ee.js";var t=e();function n(){return(0,t.jsx)(`div`,{className:`p-6`,children:(0,t.jsx)(`h1`,{className:`text-xl font-semibold text-slate-900`,children:`Confirm sign up`})})}export{n as default};

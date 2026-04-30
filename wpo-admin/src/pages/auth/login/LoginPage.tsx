@@ -1,6 +1,8 @@
-import {  useNavigate } from "react-router-dom";
+import { useState, type CSSProperties } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import type { SubmitHandler } from "react-hook-form";
+import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { login } from "@/services/auth-service/authService";
 import { useMyContext } from "@/context/ContactContext";
 import LoadingSpinner from "@/components/common/loaders/LoadingSpinner";
@@ -13,17 +15,42 @@ import {
   setAccessTokenExpiry,
   setRefreshToken,
 } from "@/utils/tokenUtils";
-import axios from "axios";
 import { useTranslation } from "react-i18next";
+import type { ToastMessageType } from "@/constants/enum";
+import { extractErrorMessage } from "@/utils/errorUtils";
+import ToastMessage from "@/components/common/toast/ToastMessage";
 
 type LoginFormInput = {
   email: string;
   password: string;
 };
 
+const LABEL_STYLE: CSSProperties = {
+  fontFamily: "Inter",
+  fontWeight: 400,
+  fontSize: "14px",
+  lineHeight: "17px",
+  color: "#000000",
+};
+
+function getInputStyle(hasError: boolean): CSSProperties {
+  return {
+    height: "40px",
+    background: "#FFFFFF",
+    border: `1px solid ${hasError ? "#DC2626" : "#A3A3A3"}`,
+    borderRadius: "6px",
+    fontFamily: "Inter",
+    fontWeight: 400,
+    fontSize: "14px",
+    lineHeight: "17px",
+    color: "#49525D",
+  };
+}
+
 export default function LoginPage() {
   const { t } = useTranslation();
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [toastMessage, setToastMessage] = useState<ToastMessageType | undefined>(undefined);
   const { setToken, setUser } = useMyContext();
 
   const navigate = useNavigate();
@@ -32,7 +59,6 @@ export default function LoginPage() {
     register,
     handleSubmit,
     reset,
-    setError,
     clearErrors,
     formState: { errors, isSubmitting },
   } = useForm<LoginFormInput>();
@@ -55,120 +81,147 @@ export default function LoginPage() {
       reset();
       navigate("/");
     } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        if (err?.response?.status == 401 || err?.response?.status == 400) {
-          setError("root", {
-            type: "server",
-            message: "errors.login.credentialsInvalid",
-          });
-        } else {
-          setError("root", {
-            type: "server",
-            message: "errors.app.unexpected",
-          });
-        }
-      } else {
-        setError("root", {
-          type: "unknown",
-          message: "errors.app.unexpected",
-        });
-      }
+      setToastMessage({
+        message: extractErrorMessage(
+          err,
+          t("auth.login.errors.credentialsInvalid") || "Invalid email or password"
+        ),
+        type: "error",
+      });
     }
   };
 
-  const inputBase =
-    "w-full rounded-md border border-slate-300 px-3 py-2 text-sm outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 disabled:bg-slate-100";
-  const inputError = "border-red-500 focus:border-red-500 focus:ring-red-500/20";
+  const emailHasError = Boolean(errors.email || errors.root);
+  const passwordHasError = Boolean(errors.password || errors.root);
 
   return (
-    <div className="flex min-h-[80vh] items-center justify-center px-4">
-      <div className="w-full max-w-[460px] overflow-hidden rounded-lg border border-slate-200 bg-white text-center shadow-md">
-        <div className="border-b border-slate-100 px-6 py-4">
-          <h2 className="text-xl font-medium text-slate-900">
-            {t("auth.login.title")}
-          </h2>
-        </div>
-        <div className="px-6 py-4">
-          <p className="mb-6 text-left text-sm text-slate-600">
-            {t("auth.login.text")}
-          </p>
+    <>
+      {toastMessage?.message && (
+        <ToastMessage
+          message={toastMessage.message}
+          type={toastMessage.type}
+          onClose={() => setToastMessage(undefined)}
+        />
+      )}
+      <div className="flex items-center justify-center bg-white px-4">
+      <div className="w-full max-w-md">
+        <div className="rounded-xl bg-white p-8 shadow-lg">
+          <div className="mb-8 text-center">
+            <h1 className="mb-2 text-3xl font-bold text-gray-900">
+              {t("auth.login.title")}
+            </h1>
+            <p className="text-gray-600">{t("auth.login.text")}</p>
+          </div>
 
           <form
-            className="flex flex-col gap-3"
             onSubmit={handleSubmit(handleLogin)}
+            className="space-y-6 text-left"
             noValidate
           >
-            <div className="text-left">
+            <div>
               <label
                 htmlFor="login-email"
-                className="mb-1 block text-sm font-medium text-slate-700"
+                className="mb-2 block"
+                style={LABEL_STYLE}
               >
-                {t("auth.login.labels.email")}
+                {t("auth.login.labels.username")}
               </label>
-              <input
-                id="login-email"
-                type="email"
-                autoComplete="off"
-                placeholder="name@example.com"
-                maxLength={255}
-                disabled={isSubmitting}
-                className={`${inputBase} ${errors.email || errors.root ? inputError : ""}`}
-                {...register("email", {
-                  ...emailValidation,
-                  onChange: () => clearErrors("root"),
-                })}
-              />
+              <div className="relative">
+                <Mail className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                <input
+                  id="login-email"
+                  type="text"
+                  autoComplete="username"
+                  maxLength={255}
+                  disabled={isSubmitting}
+                  placeholder={t("auth.login.placeholders.username")}
+                  className="w-full pr-4 pl-10 transition outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                  style={getInputStyle(emailHasError)}
+                  {...register("email", {
+                    ...emailValidation,
+                    onChange: () => {
+                      clearErrors("root");
+                    },
+                  })}
+                />
+              </div>
               {errors.email?.message && (
                 <p className="mt-1 text-left text-sm text-red-600">
-                  {t(errors.email.message)}
+                  {t(errors.email.message || "auth.login.errors.credentialsInvalid")}
                 </p>
               )}
             </div>
 
-            <div className="text-left">
+            <div>
               <label
                 htmlFor="login-password"
-                className="mb-1 block text-sm font-medium text-slate-700"
+                className="mb-2 block"
+                style={LABEL_STYLE}
               >
                 {t("auth.login.labels.password")}
               </label>
-              <input
-                id="login-password"
-                type="password"
-                maxLength={100}
-                disabled={isSubmitting}
-                className={`${inputBase} ${errors.password || errors.root ? inputError : ""}`}
-                {...register("password", {
-                  required: passwordValidation.required,
-                  onChange: () => clearErrors("root"),
-                })}
-              />
+              <div className="relative">
+                <Lock className="absolute left-3 top-1/2 h-5 w-5 -translate-y-1/2 text-gray-400" />
+                <input
+                  id="login-password"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="current-password"
+                  maxLength={100}
+                  disabled={isSubmitting}
+                  placeholder={t("auth.login.placeholders.password")}
+                  className="w-full pr-12 pl-10 transition outline-none disabled:cursor-not-allowed disabled:opacity-60"
+                  style={getInputStyle(passwordHasError)}
+                  {...register("password", {
+                    required: passwordValidation.required,
+                    onChange: () => {
+                      clearErrors("root");
+                    },
+                  })}
+                />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowPassword((prev) => !prev);
+                  }}
+                  className="absolute top-1/2 right-3 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  aria-label={
+                    showPassword
+                      ? t("auth.login.a11y.hidePassword")
+                      : t("auth.login.a11y.showPassword")
+                  }
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5" />
+                  ) : (
+                    <Eye className="h-5 w-5" />
+                  )}
+                </button>
+              </div>
               {errors.password?.message && (
                 <p className="mt-1 text-left text-sm text-red-600">
-                  {t(errors.password.message)}
+                  {t(errors.password.message || "auth.login.errors.credentialsInvalid")}
                 </p>
               )}
             </div>
 
             {errors.root?.message && (
               <p className="text-left text-sm text-red-600">
-                {t(errors.root.message)}
+                {t(errors.root.message || "auth.login.errors.credentialsInvalid")}
               </p>
             )}
-
-            
 
             <button
               type="submit"
               disabled={isSubmitting}
-              className="no-transform-button-text flex w-full items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-60"
+              className="w-full rounded-lg bg-[#002D5B] font-medium text-white shadow-md transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
+              style={{ height: "40px" }}
             >
-              {isSubmitting ? <LoadingSpinner /> : t("buttons.login")}
+              {isSubmitting ? <LoadingSpinner /> : t("auth.login.buttons.login")}
             </button>
           </form>
-
         </div>
       </div>
     </div>
+    </>
   );
 }

@@ -11,3 +11,8 @@ export const UserTypes = {
   SSO_AND_PASSWORD: 3,
 } as const;
 export type UserTypesValue = (typeof UserTypes)[keyof typeof UserTypes];
+
+export type ToastMessageType = {
+  message: string;
+  type: "success" | "error" | "warning";
+};

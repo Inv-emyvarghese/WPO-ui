@@ -1,0 +1,74 @@
+{
+  "app": {
+    "header": "Psychosocial Risk Dashboard",
+    "footer": "Psychosocial Risk Dashboard. All rights reserved.",
+    "unexpected": "Unexpected error occurs",
+    "dashboardHeaderTitle": "Psychosocial Risk Context Dashboard (Country-Level)",
+    "help": "Help"
+  },
+ 
+  "pageNotFound": {
+    "title": "Page not found",
+    "text": "We can't find the page you were looking for.",
+    "link": {
+      "back": "Back"
+    }
+  },
+
+  "errorBoundary": {
+    "title": "Something went wrong",
+    "text": "The page you’re looking for doesn’t seem to exist. Please check the URL and try again."
+  },
+
+  "auth": {
+    "login": {
+      "title": "Welcome Back!",
+      "text": "Enter your email and password to access your account",
+          "orLabel": "or",
+          "noAccountLabel": "Don't have an account?",
+          "link": {
+            "signup": "Sign Up",
+            "forgotPassword": "Forgot Password?"
+      },
+      "labels": {
+        "email": "Email address",
+        "username": "Username",
+        "password": "Password"
+      },
+      "placeholders": {
+        "username": "Enter your username",
+        "password": "Enter your password"
+      },
+      "a11y": {
+        "showPassword": "Show password",
+        "hidePassword": "Hide password"
+      },
+      "buttons": {
+        "login": "Login"
+      },
+      "errors": {
+        "credentialsInvalid": "Invalid email or password"
+      }
+    }
+  },
+ 
+  "errors": {
+    "email": {
+      "required": "Username is required",
+      "invalid": "Invalid username"
+    },
+    "password": {
+      "required": "Password is required",
+      "invalid": "Invalid password"
+    }
+  },
+
+
+  "sidebar": {
+    "contactList": "Contact list",
+    "user": "User",
+    "myProfile": "My profile",
+    "termsOfUse": "Terms of use",
+    "privacy": "Privacy"
+  }
+}

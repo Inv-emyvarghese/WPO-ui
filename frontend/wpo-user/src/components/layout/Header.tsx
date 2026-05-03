@@ -1,8 +1,12 @@
 import { isAuthenticated } from "@/utils/tokenUtils";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
-import { IconButton } from "@/components/ui/IconButton";
-import { HeaderInfoIconSize } from "@/constants/stringConstants";
+import { IconButton } from "@/components/common/icons/IconButton";
+import {
+  DASHBOARD_MAP_CARD_ALIGN_X,
+  DEFAULT_APP_ROUTE,
+  HeaderInfoIconSize,
+} from "@/constants/stringConstants";
 import { Info, Layers, Menu, Shield } from "lucide-react";
 import { cx } from "@/utils/cx";
 
@@ -12,12 +16,11 @@ interface HeaderProps {
 
 function isDashboardPath(pathname: string): boolean {
   return (
-    pathname === "/psychosocial-dashboard" ||
-    pathname.startsWith("/psychosocial-dashboard/") ||
+    pathname === "/" ||
+    pathname === DEFAULT_APP_ROUTE ||
+    pathname.startsWith(`${DEFAULT_APP_ROUTE}/`) ||
     pathname === "/dashboard" ||
-    pathname.startsWith("/dashboard/") ||
-    pathname === "/admin" ||
-    pathname.startsWith("/admin/")
+    pathname.startsWith("/dashboard/")
   );
 }
 
@@ -34,37 +37,44 @@ export default function Header({ handleDrawerToggle }: Readonly<HeaderProps>) {
   if (isDashboard) {
     return (
       <header className={barClass}>
-        <div className="box-border flex h-full w-full max-w-full min-h-16 items-center px-2 pl-2 pr-1 sm:px-3">
-          {isAuthenticated() && (
+        <div className="box-border flex h-full min-h-16 w-full items-center px-4 sm:px-6">
+          <div
+            className={cx(
+              "mx-auto flex h-full w-full min-w-0 max-w-[1350px] items-center gap-2",
+              DASHBOARD_MAP_CARD_ALIGN_X
+            )}
+          >
+            {isAuthenticated() && (
+              <IconButton
+                type="button"
+                aria-label="open drawer"
+                onClick={handleDrawerToggle}
+                className="mr-1.5 shrink-0 text-white hover:bg-white/10 sm:hidden"
+                edge="start"
+              >
+                <Menu className="h-6 w-6 text-white" aria-hidden />
+              </IconButton>
+            )}
+            <div className="flex min-w-0 flex-1 items-center gap-2.5">
+              <Shield className="h-8 w-8 shrink-0 text-white" aria-hidden />
+              <h1
+                className={
+                  // Global index.css sets `h1 { font-size: 56px; margin: … }` — override so design is 20px in the app header.
+                  "min-w-0 font-sans !m-0 !text-[20px] !font-semibold !leading-[28px] !tracking-[-0.95px] !text-white"
+                }
+              >
+                {t("app.dashboardHeaderTitle")}
+              </h1>
+            </div>
             <IconButton
               type="button"
-              aria-label="open drawer"
-              onClick={handleDrawerToggle}
-              className="mr-1.5 text-white hover:bg-white/10 sm:hidden"
-              edge="start"
+              size="sm"
+              aria-label={t("app.help")}
+              className="shrink-0 text-white hover:bg-white/10"
             >
-              <Menu className="h-6 w-6 text-white" aria-hidden />
+              <Info className="h-5 w-5 text-white" aria-hidden />
             </IconButton>
-          )}
-          <div className="flex min-w-0 flex-1 items-center gap-2.5">
-            <Shield className="h-8 w-8 shrink-0 text-white" aria-hidden />
-            <h1
-              className={
-                // Global index.css sets `h1 { font-size: 56px; margin: … }` — override so design is 20px in the app header.
-                "min-w-0 font-sans !m-0 !text-[20px] !font-semibold !leading-[28px] !tracking-[-0.95px] !text-white"
-              }
-            >
-              {t("app.dashboardHeaderTitle")}
-            </h1>
           </div>
-          <IconButton
-            type="button"
-            size="sm"
-            aria-label={t("app.help")}
-            className="shrink-0 text-white hover:bg-white/10"
-          >
-            <Info className="h-5 w-5 text-white" aria-hidden />
-          </IconButton>
         </div>
       </header>
     );
@@ -72,7 +82,7 @@ export default function Header({ handleDrawerToggle }: Readonly<HeaderProps>) {
 
   return (
     <header className={barClass}>
-      <div className="box-border flex h-full w-full max-w-full min-h-16 items-center px-2 pl-2 pr-2 sm:px-3">
+      <div className="box-border mx-auto flex h-full w-full min-h-16 max-w-[1300px] items-center px-2 pl-2 pr-2 sm:px-3">
         {isAuthenticated() && (
           <IconButton
             type="button"

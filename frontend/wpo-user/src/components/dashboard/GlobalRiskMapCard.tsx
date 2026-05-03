@@ -3,10 +3,9 @@ import { WorldChoroplethMap } from "./WorldChoroplethMap";
 import { RiskLevelLegend } from "./RiskLevelLegend";
 import { MapDetailPlaceholder } from "./MapDetailPlaceholder";
 import { MapSelectedCountryRiskPanel } from "./MapSelectedCountryRiskPanel";
-import { MapSubHeadingSize } from "@/constants/stringConstants";
 import type { CountryIdScoreMap } from "@/hooks/useCountryRiskScores";
-import { IconButton } from "@/components/ui/IconButton";
-import { Chip } from "@/components/ui/Chip";
+import { IconButton } from "@/components/common/icons/IconButton";
+import { Chip } from "@/components/common/icons/Chip";
 import { ChevronDown, X } from "lucide-react";
 import { cx } from "@/utils/cx";
 
@@ -65,22 +64,19 @@ export function GlobalRiskMapCard({
         )}
       >
         <div className="min-w-[240px] flex-1">
-          <h2 className="text-base font-semibold leading-tight text-white sm:text-xl">
+          <h2 className="text-[20px] font-semibold leading-[28px] tracking-[-0.449px] text-white">
             {i18n.mapTitle}
           </h2>
-          <p
-            className="mt-0.5 leading-tight text-slate-400/95"
-            style={{ fontSize: MapSubHeadingSize, lineHeight: 1.2 }}
-          >
+          <p className="mt-0.5 text-sm font-normal leading-5 tracking-[-0.15px] text-[#90A1B9]">
             {i18n.mapSubtitle}
           </p>
         </div>
-        <div className="flex flex-row items-center gap-2.5 text-slate-400/95">
-          <span className="whitespace-nowrap text-sm text-slate-400/95">
+        <div className="flex flex-row items-center gap-2.5 text-[#90A1B9]">
+          <span className="whitespace-nowrap text-sm font-normal leading-5 tracking-[-0.15px] text-[#90A1B9]">
             {monthYear}
           </span>
           <span
-            className="hidden h-4 w-px sm:block"
+            className="hidden h-[15px] w-px sm:block"
             style={{ backgroundColor: "rgba(148,163,184,0.35)" }}
             aria-hidden
           />
@@ -107,10 +103,14 @@ export function GlobalRiskMapCard({
             }}
             aria-expanded={open}
             aria-label={open ? "collapse map" : "expand map"}
-            className="shrink-0 text-white hover:bg-white/10"
+            className="inline-flex h-5 min-h-5 w-5 min-w-5 shrink-0 p-0 text-[#90A1B9] hover:bg-white/10"
           >
             <ChevronDown
-              className={cx("h-5 w-5 transition-transform duration-200", open && "rotate-180")}
+              size={20}
+              className={cx(
+                "shrink-0 flex-none transition-transform duration-200",
+                open && "rotate-180"
+              )}
               aria-hidden
             />
           </IconButton>
@@ -135,7 +135,7 @@ export function GlobalRiskMapCard({
           )}
           <div
             aria-label="World risk map"
-            className="relative flex w-full min-w-0 flex-col"
+            className="relative mx-auto flex w-full min-w-0 max-w-full flex-col"
             style={{
               minHeight: worldMapAreaHeight,
               height: worldMapAreaHeight,

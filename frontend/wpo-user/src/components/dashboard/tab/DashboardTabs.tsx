@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { ExecutiveOverviewContent } from "./ExecutiveOverviewContent";
 import { ExecutiveOverviewEmptyState } from "./ExecutiveOverviewEmptyState";
-import { TabBar } from "@/components/ui/TabBar";
+import { TabBar } from "@/components/common/icons/TabBar";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { PanelContainer } from "@/components/dashboard/psychosocial/PanelContainer";
 import { RiskDimensionsTable } from "@/components/dashboard/psychosocial/RiskDimensionsTable";

@@ -3,7 +3,9 @@ import { AlertTriangle, Shield } from "lucide-react";
 
 const titleColor = "#1D293D";
 const descriptionColor = "#62748E";
-const actionBorder = "rgba(148, 163, 184, 0.5)";
+
+const actionPillShadow =
+  "0 1px 3px 0 rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10)";
 
 export function ExecutiveOverviewEmptyState() {
   const { t } = useTranslation();
@@ -31,13 +33,13 @@ export function ExecutiveOverviewEmptyState() {
         {t(`${p}.description`)}
       </p>
       <div
-        className="mt-2.5 inline-flex max-w-full items-center justify-center gap-1 rounded-full border border-solid py-[0.45rem] px-2"
-        style={{ borderColor: actionBorder, backgroundColor: "#fff" }}
+        className="mt-2.5 box-border flex h-10 w-max min-w-[286px] max-w-full shrink-0 items-center justify-center gap-2 rounded-full border border-[#E2E8F0] bg-white px-4 py-2"
+        style={{ boxShadow: actionPillShadow }}
       >
         <span className="flex shrink-0 leading-none" aria-hidden>
           <AlertTriangle className="h-5 w-5" style={{ color: "#FE9A00" }} aria-hidden />
         </span>
-        <span className="text-left text-sm font-medium" style={{ color: descriptionColor }}>
+        <span className="min-w-0 shrink self-center whitespace-nowrap text-center text-[14px] font-normal leading-[20px] tracking-[-0.15px] text-[#90A1B9]">
           {t(`${p}.actionHint`)}
         </span>
       </div>

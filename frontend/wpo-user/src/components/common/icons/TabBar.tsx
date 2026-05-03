@@ -35,14 +35,14 @@ const toneTabButton: Record<TabBarTone, { base: string; selected: string; disabl
     base:
       "inline-flex h-full min-h-0 min-w-0 items-center justify-center gap-1.5 border-0 border-t-[3px] border-transparent bg-transparent px-2 py-0 text-left text-[15px] leading-tight text-slate-600 transition-[background-color,color,border-color] duration-200 sm:px-3",
     selected: "rounded-t-lg border-t-[#1447E6] bg-white text-[#1447E6]",
-    disabled: "pointer-events-auto cursor-not-allowed opacity-100",
-  },
+    disabled:
+    "pointer-events-auto cursor-not-allowed opacity-100 !text-[#45556C] [&_svg]:!text-[#45556C] [&_svg]:!stroke-[#45556C]",  },
   dark: {
     base:
       "inline-flex h-full min-h-0 min-w-0 shrink-0 items-center justify-center gap-1.5 border-0 border-t-[3px] border-transparent bg-transparent px-2 py-0 text-left text-xs font-medium transition-[background-color,color,border-color] duration-200 sm:px-3 sm:text-sm text-slate-300",
     selected: "rounded-t-lg border-t-[#60A5FA] bg-slate-700/90 text-white",
-    disabled: "pointer-events-auto cursor-not-allowed opacity-100",
-  },
+    disabled:
+    "pointer-events-auto cursor-not-allowed opacity-100 !text-[#45556C] [&_svg]:!text-[#45556C] [&_svg]:!stroke-[#45556C]",  },
 };
 
 export function TabBar({

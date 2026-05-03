@@ -1,5 +1,11 @@
 export const APP_FONT_FAMILY = '"Inter", "Noto Sans JP", system-ui, sans-serif';
 
+/** Default landing path (psychosocial dashboard). Use instead of `/` or `/login` where appropriate. */
+export const DEFAULT_APP_ROUTE = "/psychosocial-dashboard";
+
+/** Matches GlobalRiskMapCard section horizontal padding so dashboard header & filter align with map body. */
+export const DASHBOARD_MAP_CARD_ALIGN_X = "px-3 sm:px-4 md:px-5";
+
 //Map & Dashboard Title
 export const MainHeadingSize = "20px";
 export const HeaderInfoIconSize = 20;

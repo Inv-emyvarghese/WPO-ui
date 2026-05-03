@@ -9,6 +9,7 @@
   "dashboard": {
     "filters": {
       "country": "Country",
+      "company": "Company",
       "industry": "Industry",
       "companySize": "Company size",
       "selectPlaceholder": "—"

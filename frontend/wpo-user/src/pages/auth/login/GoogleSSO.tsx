@@ -11,6 +11,7 @@ import type { CredentialResponse } from "@react-oauth/google";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import { DEFAULT_APP_ROUTE } from "@/constants/stringConstants";
 
 //Defining the GoogleSSO props type
 type GoogleSSOProps = {
@@ -43,7 +44,7 @@ export default function GoogleSSO({ sourcePage }: GoogleSSOProps) {
       setUser({ name, email, signup_type, image_url });
     }
 
-    navigate("/"); // Redirect to contacts page
+    navigate(DEFAULT_APP_ROUTE);
   };
 
   // Helper to show a confirm dialog and return result

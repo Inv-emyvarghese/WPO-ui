@@ -73,28 +73,31 @@ export function ExecutiveOverviewContent() {
   const p = "dashboard.mapDetailTabs.executiveOverviewContent";
 
   return (
-    <div className="box-border w-full space-y-6 py-2.5">
-      <PanelContainer title={t(`${p}.keyRiskMetrics`)}>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="box-border flex w-full flex-col gap-[24px] py-2.5">
+      <PanelContainer
+        title={t(`${p}.keyRiskMetrics`)}
+        contentClassName="flex min-h-[134px] flex-col items-start self-stretch px-5 pt-5 pb-0"
+      >
+        <div className="grid w-full min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <DashboardMetricCard
             label={t(`${p}.metrics.overallRiskScore`)}
             value={t(`${p}.metrics.overallRiskScoreValue`)}
-            icon={<AlertTriangle className="h-5 w-5" strokeWidth={2} />}
+            icon={<AlertTriangle size={20} strokeWidth={2} aria-hidden />}
           />
           <DashboardMetricCard
             label={t(`${p}.metrics.tier`)}
             value={t(`${p}.metrics.tierValue`)}
-            icon={<Layers className="h-5 w-5" strokeWidth={2} />}
+            icon={<Layers size={20} strokeWidth={2} aria-hidden />}
           />
           <DashboardMetricCard
             label={t(`${p}.metrics.regulatoryMaturity`)}
             value={t(`${p}.metrics.regulatoryMaturityValue`)}
-            icon={<Scale className="h-5 w-5" strokeWidth={2} />}
+            icon={<Scale size={20} strokeWidth={2} aria-hidden />}
           />
           <DashboardMetricCard
             label={t(`${p}.metrics.trendDirection`)}
             value={t(`${p}.metrics.trendDirectionValue`)}
-            icon={<TrendingUp className="h-5 w-5" strokeWidth={2} />}
+            icon={<TrendingUp size={20} strokeWidth={2} aria-hidden />}
           />
         </div>
       </PanelContainer>
